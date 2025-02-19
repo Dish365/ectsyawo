@@ -1,4 +1,13 @@
-export default {
+import type { Rule } from '@sanity/types'
+import type { SanityAsset } from '@sanity/image-url/lib/types/types'
+
+interface PostPreviewSelection {
+  title: string;
+  author: string;
+  media: SanityAsset;
+}
+
+const postSchema = {
   name: 'post',
   title: 'Insight Post',
   type: 'document',
@@ -7,7 +16,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required()
+      validation: (rule: Rule) => rule.required()
     },
     {
       name: 'slug',
@@ -17,7 +26,7 @@ export default {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required()
+      validation: (rule: Rule) => rule.required()
     },
     {
       name: 'author',
@@ -84,7 +93,7 @@ export default {
       author: 'author.name',
       media: 'mainImage'
     },
-    prepare(selection: any) {
+    prepare(selection: PostPreviewSelection) {
       const {title, author, media} = selection
       return {
         title: title,
@@ -93,4 +102,6 @@ export default {
       }
     }
   }
-} 
+}
+
+export default postSchema 

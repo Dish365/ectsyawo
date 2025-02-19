@@ -20,7 +20,7 @@ export function TestimonialCard({ quote, author, role, organization, initials }:
           <QuoteIcon className="h-8 w-8 text-muted-foreground/50" />
         </div>
         <blockquote className="text-lg text-muted-foreground mb-4">
-          "{quote}"
+          &ldquo;{quote}&rdquo;
         </blockquote>
       </div>
       <div className="flex items-center gap-4 pt-4 border-t">

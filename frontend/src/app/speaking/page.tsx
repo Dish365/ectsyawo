@@ -2,18 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { sendContactEmail } from "../actions";
 import { useFormStatus } from "react-dom";
 import { useActionState } from "react";
-import dynamic from 'next/dynamic';
-import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import { LogoCarousel } from "@/components/ui/carousel";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const speakingServices = [
   {
@@ -147,22 +143,10 @@ const testimonials = [
   }
 ];
 
-const VideoTestimonials = dynamic(
-  () => import('@/components/video-testimonials'),
-  { 
-    loading: () => <Skeleton className="h-[400px] w-full" />,
-    ssr: false
-  }
-);
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  
-  return (
-    <Button type="submit" size="lg" disabled={pending}>
-      {pending ? "Sending..." : "Send Message"}
-    </Button>
-  );
+interface FormState {
+  success?: boolean;
+  error?: string;
+  development?: boolean;
 }
 
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
@@ -197,8 +181,18 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   );
 };
 
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  
+  return (
+    <Button type="submit" size="lg" disabled={pending}>
+      {pending ? "Sending..." : "Send Message"}
+    </Button>
+  );
+}
+
 export default function SpeakingPage() {
-  const [state, formAction] = useActionState(async (_prevState: any, formData: FormData) => {
+  const [state, formAction] = useActionState(async (_prevState: FormState | null, formData: FormData) => {
     const result = await sendContactEmail(formData);
     return result;
   }, null);
@@ -678,12 +672,6 @@ export default function SpeakingPage() {
         </div>
       </section>
 
-      {/* Video Testimonials Section */}
-      {/* <section className="container py-12 md:py-24">
-        <h2 className="text-3xl font-bold text-center mb-12">Video Testimonials</h2>
-        <VideoTestimonials />
-      </section> */}
-
       {/* Testimonials Section */}
       <section id="testimonials" className="container py-12 md:py-24">
         <div className="mx-auto max-w-[85rem]">
@@ -720,20 +708,12 @@ export default function SpeakingPage() {
                       </div>
                     </div>
                     <blockquote className="text-base md:text-lg leading-relaxed text-muted-foreground mb-6">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </blockquote>
-                    <div className="flex items-center gap-4 pt-4 border-t border-primary/10">
-                      <Avatar>
-                        <AvatarFallback className="bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-500">
-                          {testimonial.initials}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-semibold">{testimonial.author}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {testimonial.role}, {testimonial.organization}
-                        </p>
-                      </div>
+                    <div className="flex items-center justify-center">
+                      <p className="text-muted-foreground">
+                        Get in touch and let&apos;s discuss your needs and goals now
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -743,80 +723,73 @@ export default function SpeakingPage() {
         </div>
       </section>
 
-      {/* Booking Section with Contact Form */}
-      <section id="booking" className="container py-12 md:py-24">
-        <div className="mx-auto max-w-[58rem]">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Are You Ready to Inspire Your Audience to Action in Your Next Event?</h2>
-            <p className="text-muted-foreground">
-              Get in touch and let's discuss your needs and goals now
-            </p>
+      {/* Contact Form Section */}
+      <section className="container py-12 md:py-24">
+        <div className="max-w-[58rem] mx-auto">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl font-bold">Get in Touch</h2>
+            <p className="text-muted-foreground">Let&apos;s discuss your speaking engagement needs</p>
           </div>
 
-          <form action={formAction} className="space-y-8">
-            {state?.success && (
-              <div className="p-4 rounded-lg bg-green-50 text-green-900 mb-6">
-                <p className="text-center font-medium">
-                  {state.development 
-                    ? "Form submitted successfully (Development Mode - Email not sent)"
-                    : "Thank you for your inquiry! We'll get back to you soon."}
-                </p>
-              </div>
-            )}
-            {state?.error && (
-              <div className="p-4 rounded-lg bg-red-50 text-red-900 mb-6">
-                <p className="text-center font-medium">
-                  {state.error}. Please try again or contact us directly.
-                </p>
-              </div>
-            )}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-3xl" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 to-primary/20 rounded-3xl blur-2xl opacity-50" />
+            
+            <div className="relative p-8 md:p-12 bg-background/80 backdrop-blur-sm rounded-3xl border border-primary/10 shadow-lg">
+              <form action={formAction} className="space-y-6">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">Name</label>
+                    <Input id="name" name="name" required placeholder="Your name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium">Email</label>
+                    <Input id="email" name="email" type="email" required placeholder="Your email" />
+                  </div>
+                </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" placeholder="Your name" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="Your email" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="organization">Organization</Label>
-                <Input id="organization" name="organization" placeholder="Your organization" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="eventType">Speaking Type</Label>
-                <select
-                  id="eventType"
-                  name="eventType"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  required
-                  aria-label="Select event type"
-                >
-                  <option value="">Select event type</option>
-                  <option value="keynote">Guest Speaking</option>
-                  <option value="workshop">Workshop or Seminar</option>
-                  <option value="corporate">Corporate Training</option>
-                  <option value="academic">Academic Lecture</option>
-                  <option value="panel">Panel Speaking</option>
-                </select>
-              </div>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <label htmlFor="organization" className="text-sm font-medium">Organization</label>
+                    <Input id="organization" name="organization" required placeholder="Your organization" />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="eventType" className="text-sm font-medium">Event Type</label>
+                    <Input id="eventType" name="eventType" required placeholder="Type of event" />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium">Message</label>
+                  <Textarea 
+                    id="message" 
+                    name="message" 
+                    required 
+                    placeholder="Tell us about your event and requirements"
+                    className="min-h-[150px]"
+                  />
+                </div>
+
+                <div className="flex flex-col space-y-4">
+                  <SubmitButton />
+                  {state?.success && (
+                    <p className="text-sm text-green-600">
+                      {state.development 
+                        ? "Message received (development mode)" 
+                        : "Thank you for your message. We'll be in touch soon!"}
+                    </p>
+                  )}
+                  {state?.error && (
+                    <p className="text-sm text-red-600">
+                      {state.error}
+                    </p>
+                  )}
+                </div>
+              </form>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
-              <Textarea
-                id="message"
-                name="message"
-                placeholder="Tell me about your event, expected audience and size, date, and any other info you believe would help me get a good grasp of your event"
-                required
-              />
-            </div>
-            <div className="flex justify-center gap-4">
-              <SubmitButton />
-            </div>
-          </form>
+          </div>
         </div>
       </section>
     </div>
   );
-} 
+}

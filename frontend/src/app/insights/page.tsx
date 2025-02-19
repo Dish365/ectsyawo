@@ -1,8 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getLatestPosts } from "@/lib/sanity";
-import { Post } from "@/lib/types";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function InsightsPage() {
   const posts = await getLatestPosts(6);
@@ -40,11 +40,12 @@ export default async function InsightsPage() {
           {posts.map((post) => (
             <Card key={post._id} className="flex flex-col">
               {post.imageUrl && (
-                <div className="aspect-video">
-                  <img
+                <div className="aspect-video relative">
+                  <Image
                     src={post.imageUrl}
                     alt={post.title}
-                    className="w-full h-full object-cover rounded-t-lg"
+                    fill
+                    className="object-cover rounded-t-lg"
                   />
                 </div>
               )}

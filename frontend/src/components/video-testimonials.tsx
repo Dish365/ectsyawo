@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 interface VideoTestimonial {
   id: string;
@@ -31,10 +32,11 @@ export default function VideoTestimonials() {
           <div className="aspect-video bg-muted">
             {/* Video player implementation */}
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src={testimonial.thumbnail}
                 alt={`${testimonial.speaker} testimonial thumbnail`}
-                className="object-cover w-full h-full"
+                fill
+                className="object-cover"
               />
               <button 
                 className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors"

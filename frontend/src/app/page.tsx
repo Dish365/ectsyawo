@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { LogoCarousel } from "@/components/ui/carousel";
@@ -53,21 +52,21 @@ export default function Home() {
     },
     {
       type: "image",
-      src: "/gallery/lnjfoods-team.png",
+      src: "/gallery/lnjfoods-team.jpg",
       alt: "LnJ Foods team",
       title: "The LnJ Foods team",
       sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
     },
     {
       type: "image",
-      src: "/gallery/pork-research.png",
+      src: "/gallery/pork-research.jpg",
       alt: "Lab work during pork research",
       title: "Lab work during pork research",
       sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
     },
     {
       type: "image",
-      src: "/gallery/teaching.png",
+      src: "/gallery/teaching.jpg",
       alt: "Teaching concepts in food science",
       title: "Teaching concepts in food science",
       sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
@@ -88,9 +87,37 @@ export default function Home() {
     },
     {
       type: "image",
-      src: "/gallery/bucket-garden.png",
+      src: "/gallery/bucket-garden.jpg",
       alt: "My thriving bucket garden",
       title: "My thriving bucket garden",
+      sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+    },
+    {
+      type: "image",
+      src: "/gallery/food-safety-labwork.jpg",
+      alt: "Food safety lab work",
+      title: "Food safety lab work",
+      sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+    },
+    {
+      type: "image",
+      src: "/gallery/research-poster-presentation.jpg",
+      alt: "Research poster presentation",
+      title: "Research poster presentation",
+      sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+    },
+    {
+      type: "image",
+      src: "/gallery/published-research.jpg",
+      alt: "Published research",
+      title: "Published research",
+      sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+    },
+    {
+      type: "image",
+      src: "/gallery/panel-speaking.jpg",
+      alt: "Panel speaking",
+      title: "Panel speaking",
       sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
     }
   ];
@@ -168,7 +195,7 @@ export default function Home() {
               <p className="text-lg leading-relaxed text-muted-foreground">
                 My speaking style is engaging and informative, offering practical insights your audience can implement almost immediately. 
               
-                If your goal is to ensure your audience are able to act on what's shared at the event, then you're at the right place.
+                If your goal is to ensure your audience are able to act on what&apos;s shared at the event, then you&apos;re at the right place.
                 
                 Want to inspire your audience to action at your next event?
                

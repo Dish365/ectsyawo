@@ -1,16 +1,17 @@
 import { getPost } from "@/lib/sanity";
 import { notFound } from "next/navigation";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextReactComponents } from "@portabletext/react";
+import Image from "next/image";
 
-const components = {
+const components: Partial<PortableTextReactComponents> = {
   block: {
-    h1: ({children}: any) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
-    h2: ({children}: any) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
-    h3: ({children}: any) => <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>,
-    normal: ({children}: any) => <p className="mb-4 leading-relaxed">{children}</p>,
+    h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
+    h2: ({children}) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
+    h3: ({children}) => <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>,
+    normal: ({children}) => <p className="mb-4 leading-relaxed">{children}</p>,
   },
   marks: {
-    link: ({value, children}: any) => {
+    link: ({value, children}) => {
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
       return (
         <a 
@@ -25,12 +26,14 @@ const components = {
     },
   },
   types: {
-    image: ({value}: any) => {
+    image: ({value}) => {
       return (
         <div className="my-8">
-          <img
+          <Image
             src={value.url}
             alt={value.alt || ''}
+            width={800}
+            height={450}
             className="rounded-lg w-full"
           />
           {value.alt && (
@@ -76,11 +79,12 @@ export default async function PostPage({
       </header>
 
       {post.imageUrl && (
-        <div className="mb-12">
-          <img
+        <div className="mb-12 relative aspect-video">
+          <Image
             src={post.imageUrl}
             alt={post.title}
-            className="rounded-lg w-full aspect-video object-cover"
+            fill
+            className="rounded-lg object-cover"
           />
         </div>
       )}

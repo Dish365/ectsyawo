@@ -101,6 +101,12 @@ const collaborationAreas = [
   }
 ];
 
+interface FormState {
+  success?: boolean;
+  error?: string;
+  development?: boolean;
+}
+
 function SubmitButton() {
   const { pending } = useFormStatus();
   
@@ -112,7 +118,7 @@ function SubmitButton() {
 }
 
 export default function ResearchPage() {
-  const [state, formAction] = useActionState(async (prevState: any, formData: FormData) => {
+  const [state, formAction] = useActionState(async (prevState: FormState | null, formData: FormData) => {
     formData.set('eventType', 'Research Collaboration');
     const result = await sendContactEmail(formData);
     return result;
@@ -157,7 +163,7 @@ export default function ResearchPage() {
       <section id="timeline" className="container py-12 md:py-24 bg-sage-50">
         <h2 className="text-3xl font-bold text-center mb-12">Research Journey</h2>
         <div className="max-w-3xl mx-auto">
-          {timeline.map((item, index) => (
+          {timeline.map((item) => (
             <div key={item.year} className="relative pl-8 pb-12 last:pb-0">
               {/* Timeline line */}
               <div className="absolute left-0 top-0 bottom-0 w-px bg-border" />
