@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   experimental: {
     authInterrupts: true,
   },
@@ -12,6 +13,14 @@ const nextConfig: NextConfig = {
         pathname: '/images/**',
       },
     ],
+  },
+  rewrites: async () => {
+    return [
+      {
+        source: '/studio/:path*',
+        destination: '/studio/[[...tool]]/page',
+      },
+    ]
   },
   headers: async () => [
     {
