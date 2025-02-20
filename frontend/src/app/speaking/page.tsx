@@ -215,7 +215,7 @@ export default function SpeakingPage() {
               Inspire your audience to action at your next event with practical insights and relatable stories
             </p>
             <div className="flex justify-center md:justify-start w-full">
-             <Link href="/speaking#speaking" className="w-[200px]">
+             <Link href="/speaking#booking" className="w-[200px]">
               <Button size="lg" className="mt-2">
                 Contact Me
               </Button>
