@@ -3,6 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -28,7 +32,27 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
+const MobileNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <Link 
+    href={href} 
+    className="block py-2 text-lg hover:text-primary transition-colors"
+  >
+    {children}
+  </Link>
+);
+
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -42,7 +66,8 @@ const Navbar = () => {
           />
         </Link>
 
-        <NavigationMenu>
+        {/* Desktop Navigation */}
+        <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Speaking</NavigationMenuTrigger>
@@ -127,6 +152,37 @@ const Navbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4">
+                <MobileNavLink href="/speaking">Speaking</MobileNavLink>
+                <MobileNavLink href="/speaking#services">Services</MobileNavLink>
+                <MobileNavLink href="/speaking#testimonials">Testimonials</MobileNavLink>
+                <MobileNavLink href="/research">Research</MobileNavLink>
+                <MobileNavLink href="/research#timeline">Research Journey</MobileNavLink>
+                <MobileNavLink href="/insights">Insights</MobileNavLink>
+                <MobileNavLink href="/insights#featured">Featured Content</MobileNavLink>
+                <div className="pt-4">
+                  <Link 
+                    href="/speaking#booking"
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    Book for Speaking
+                  </Link>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
