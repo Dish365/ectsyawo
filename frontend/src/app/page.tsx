@@ -61,8 +61,8 @@ const MobileHero = () => (
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
     </div>
     <div className="relative h-full min-h-[100svh] flex flex-col">
-      <div className="flex-1 flex flex-col items-center justify-end px-4 pb-20">
-        <div className="w-full max-w-[90%] space-y-4 text-center">
+      <div className="flex-1 flex flex-col items-center justify-center px-4">
+        <div className="w-full max-w-[85%] space-y-4 text-center">
           <h1 className="text-3xl font-bold leading-tight tracking-tighter text-white animate-fade-in">
             Inspire Your Audience to Action
           </h1>
@@ -70,11 +70,11 @@ const MobileHero = () => (
             At Your Next Event
           </p>
           <div className="flex justify-center animate-fade-in-up delay-300 pt-6">
-            <Link href="/speaking" className="w-full">
+            <Link href="/speaking" className="w-[200px]">
               <Button 
                 size="lg" 
                 variant="default" 
-                className="w-full text-sm hover:scale-105 transition-transform py-6 h-auto"
+                className="w-full text-sm hover:scale-105 transition-transform py-4 h-auto"
               >
                 Discover How
               </Button>

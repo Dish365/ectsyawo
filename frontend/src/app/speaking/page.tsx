@@ -10,6 +10,7 @@ import { LogoCarousel } from "@/components/ui/carousel";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 
 const speakingServices = [
   {
@@ -214,9 +215,11 @@ export default function SpeakingPage() {
               Inspire your audience to action at your next event with practical insights and relatable stories
             </p>
             <div className="flex justify-center md:justify-start w-full">
+             <Link href="/speaking#speaking" className="w-[200px]">
               <Button size="lg" className="mt-2">
                 Contact Me
               </Button>
+            </Link>
             </div>
           </div>
           <div className="flex-1 w-full md:w-auto">
@@ -724,7 +727,7 @@ export default function SpeakingPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="container py-12 md:py-24">
+      <section id="booking" className="container py-12 md:py-24">
         <div className="max-w-[58rem] mx-auto">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold">Get in Touch</h2>
