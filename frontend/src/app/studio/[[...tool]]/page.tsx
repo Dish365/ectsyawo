@@ -7,6 +7,10 @@
  * https://github.com/sanity-io/next-sanity
  */
 
+// Export metadata at the top level (server-side)
+export { metadata, viewport } from 'next-sanity/studio'
+
+// Mark the rest as client-side
 'use client'
 
 import { NextStudio } from 'next-sanity/studio'
@@ -15,8 +19,6 @@ import config from '../../../../sanity.config'
 // Ensures the Studio route is statically generated
 export const dynamic = 'force-static'
 export const runtime = 'edge'
-
-export { metadata, viewport } from 'next-sanity/studio'
 
 export default function StudioPage() {
   return <NextStudio config={config} />

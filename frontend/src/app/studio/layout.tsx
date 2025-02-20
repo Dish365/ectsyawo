@@ -1,7 +1,6 @@
-'use client'
-
 import { metadata as studioMetadata } from 'next-sanity/studio'
 
+// Server-side metadata configuration
 export const metadata = {
   ...studioMetadata,
   title: 'Sanity Studio',
@@ -12,6 +11,9 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
 }
+
+// Client-side layout component
+'use client'
 
 export default function StudioLayout({
   children,
