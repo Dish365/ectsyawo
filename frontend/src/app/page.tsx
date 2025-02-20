@@ -1,11 +1,94 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { LogoCarousel } from "@/components/ui/carousel";
 import { Timeline } from "@/components/ui/timeline"
 import { TestimonialCard } from "@/components/ui/testimonial-card"
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+
+const DesktopHero = () => (
+  <section className="relative w-full min-h-[100svh] overflow-hidden">
+    <div className="absolute inset-0">
+      <Image
+        src="/images/ectsyawo.png"
+        alt="Etornam Tsyawo Hero Background"
+        fill
+        className="object-cover object-center"
+        priority
+        sizes="100vw"
+        quality={90}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/60" />
+    </div>
+    <div className="container relative h-full min-h-[100svh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[90%] sm:max-w-[80%] md:max-w-[800px] space-y-6 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tighter text-white animate-fade-in">
+          Inspire Your Audience to Action
+        </h1>
+        <p className="text-lg md:text-xl lg:text-2xl text-white/90 animate-fade-in-up max-w-[600px] mx-auto">
+          At Your Next Event
+        </p>
+        <div className="flex justify-center gap-4 animate-fade-in-up delay-300 pt-6">
+          <Link href="/speaking">
+            <Button 
+              size="lg" 
+              variant="default" 
+              className="text-base hover:scale-105 transition-transform px-6 py-6 h-auto"
+            >
+              Discover How
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const MobileHero = () => (
+  <section className="relative w-full min-h-[100svh] overflow-hidden bg-black">
+    <div className="absolute inset-0">
+      <Image
+        src="/images/ectsyawo-mobile.png"
+        alt="Etornam Tsyawo Hero Background"
+        fill
+        className="object-cover object-[30%_center] opacity-80"
+        priority
+        sizes="(max-width: 768px) 100vw, 1px"
+        quality={90}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+    </div>
+    <div className="relative h-full min-h-[100svh] flex flex-col">
+      <div className="flex-1 flex flex-col items-center justify-end px-4 pb-20">
+        <div className="w-full max-w-[90%] space-y-4 text-center">
+          <h1 className="text-3xl font-bold leading-tight tracking-tighter text-white animate-fade-in">
+            Inspire Your Audience to Action
+          </h1>
+          <p className="text-base text-white/90 animate-fade-in-up">
+            At Your Next Event
+          </p>
+          <div className="flex justify-center animate-fade-in-up delay-300 pt-6">
+            <Link href="/speaking" className="w-full">
+              <Button 
+                size="lg" 
+                variant="default" 
+                className="w-full text-sm hover:scale-105 transition-transform py-6 h-auto"
+              >
+                Discover How
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 export default function Home() {
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+
   const timeline = [
     { year: "2024-present", events: [
       "Doctoral research studying how nutrients can be better retained in food during cooking at home",
@@ -27,12 +110,12 @@ export default function Home() {
   ];
 
   const organizationLogos = [
-    { src: "/logos/centreforgreengrowth.png", alt: "Centre for Green Growth", sizes: "(max-width: 768px) 33vw, 20vw" },
-    { src: "/logos/graffiland.png", alt: "GraffiLand", sizes: "(max-width: 768px) 33vw, 20vw" },
-    { src: "/logos/womeninengineeringGhIE.png", alt: "Women in Engineering GhIE", sizes: "(max-width: 768px) 33vw, 20vw" },
-    { src: "/logos/mcfalumniknust.png", alt: "MCF Alumni KNUST", sizes: "(max-width: 768px) 33vw, 20vw" },
-    { src: "/logos/greenafricayouthorganization.png", alt: "Green Africa Youth Organization", sizes: "(max-width: 768px) 33vw, 20vw" },
-    { src: "/logos/thefooddiscourse.png", alt: "The Food Discourse", sizes: "(max-width: 768px) 33vw, 20vw" },
+    { src: "/logos/centreforgreengrowth.png", alt: "Centre for Green Growth", sizes: "(max-width: 768px) 33vw, 20vw", priority: true },
+    { src: "/logos/graffiland.png", alt: "GraffiLand", sizes: "(max-width: 768px) 33vw, 20vw", priority: true },
+    { src: "/logos/womeninengineeringGhIE.png", alt: "Women in Engineering GhIE", sizes: "(max-width: 768px) 33vw, 20vw", priority: true },
+    { src: "/logos/mcfalumniknust.png", alt: "MCF Alumni KNUST", sizes: "(max-width: 768px) 33vw, 20vw", priority: true },
+    { src: "/logos/greenafricayouthorganization.png", alt: "Green Africa Youth Organization", sizes: "(max-width: 768px) 33vw, 20vw", priority: true },
+    { src: "/logos/thefooddiscourse.png", alt: "The Food Discourse", sizes: "(max-width: 768px) 33vw, 20vw", priority: true },
   ];
 
   const mediaGallery = [
@@ -124,36 +207,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      {/* Hero Section with Parallax */}
-      <section className="relative w-full h-[80vh] min-h-[600px] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/ectsyawo.png"
-            alt="Etornam Tsyawo Hero Background"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="(max-width: 1400px) 100vw, 1400px"
-            quality={90}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" />
-        </div>
-        <div className="container relative h-full flex flex-col items-center justify-center gap-6 text-white">
-          <h1 className="text-center text-4xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1] animate-fade-in max-w-[800px]">
-            Inspire Your Audience to Action
-          </h1>
-          <p className="text-center text-lg sm:text-xl animate-fade-in-up">
-            At Your Next Event
-          </p>
-          <div className="flex gap-4 animate-fade-in-up delay-300 mt-4">
-            <Link href="/speaking">
-              <Button size="lg" variant="default" className="hover:scale-105 transition-transform">
-                Discover How
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {isDesktop ? <DesktopHero /> : <MobileHero />}
 
       {/* Speaking Section with Logo Carousel */}
       <section className="container py-16">
@@ -221,6 +275,7 @@ export default function Home() {
               src="/images/about-etornam-tsyawo.jpg"
               alt="Etornam C. Tsyawo"
               fill
+              priority
               className="object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
               quality={90}

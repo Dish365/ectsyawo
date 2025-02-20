@@ -63,8 +63,8 @@ const Navbar = () => {
             src="/logo.png"
             alt="Logo"
             width={150}
-            height={60}
-            className="object-contain"
+            height={40}
+            className="object-contain w-auto h-auto"
           />
         </Link>
 

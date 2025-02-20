@@ -11,6 +11,7 @@ interface LogoCarouselProps {
     src: string
     alt: string
     sizes: string
+    priority?: boolean
   }>
 }
 
@@ -40,6 +41,7 @@ export function LogoCarousel({ logos }: LogoCarouselProps) {
                     src={logo.src}
                     alt={logo.alt}
                     fill
+                    priority={logo.priority}
                     className="object-contain p-2 transition-transform duration-300 hover:scale-105"
                     sizes={logo.sizes}
                   />
