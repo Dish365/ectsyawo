@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -165,14 +165,11 @@ const Navbar = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col gap-4">
+              <SheetTitle>Menu</SheetTitle>
+              <nav className="flex flex-col gap-4 mt-6">
                 <MobileNavLink href="/speaking">Speaking</MobileNavLink>
-                <MobileNavLink href="/speaking#services">Services</MobileNavLink>
-                <MobileNavLink href="/speaking#testimonials">Testimonials</MobileNavLink>
                 <MobileNavLink href="/research">Research</MobileNavLink>
-                <MobileNavLink href="/research#timeline">Research Journey</MobileNavLink>
                 <MobileNavLink href="/insights">Insights</MobileNavLink>
-                <MobileNavLink href="/insights#featured">Featured Content</MobileNavLink>
                 <div className="pt-4">
                   <Link 
                     href="/speaking#booking"
