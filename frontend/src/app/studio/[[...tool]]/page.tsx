@@ -1,10 +1,7 @@
 'use client'
 
-// Server-side exports in separate file
-export { metadata, viewport } from 'next-sanity/studio'
-
-// Client-side component in different file
- // MUST be first line with NO preceding comments/whitespace
+import { NextStudio } from 'next-sanity/studio'
+import config from '../../../../sanity.config'
 
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
@@ -15,13 +12,8 @@ export { metadata, viewport } from 'next-sanity/studio'
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../sanity.config'
-
-// Ensures the Studio route is statically generated
-export const dynamic = 'force-static'
-export const runtime = 'edge'
-
 export default function StudioPage() {
   return <NextStudio config={config} />
 }
+
+export const dynamic = 'force-static'
