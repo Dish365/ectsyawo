@@ -210,23 +210,23 @@ export default function Home() {
       {isDesktop ? <DesktopHero /> : <MobileHero />}
 
       {/* Speaking Section with Logo Carousel */}
-      <section className="container py-16">
-        <div className="space-y-8 animate-fade-in-up">
-          <h2 className="mb-8 text-center text-3xl font-bold">Speaking Engagements</h2>
-          <div className="mb-8 text-center">
-            <p className="max-w-[800px] mx-auto text-lg text-muted-foreground">
+      <section className="container py-8 md:py-16">
+        <div className="space-y-6 md:space-y-8 animate-fade-in-up px-4 md:px-0">
+          <h2 className="mb-4 md:mb-8 text-center text-2xl md:text-3xl font-bold">Speaking Engagements</h2>
+          <div className="mb-4 md:mb-8 text-center">
+            <p className="max-w-[800px] mx-auto text-base md:text-lg text-muted-foreground">
               
             </p>
           </div>
           <LogoCarousel logos={organizationLogos} />
 
           {/* Testimonials */}
-          <div className="text-center mb-8">
-            <h3 className="text-xl text-muted-foreground font-bold mb-4">
+          <div className="text-center mb-4 md:mb-8">
+            <h3 className="text-lg md:text-xl text-muted-foreground font-bold mb-4">
               Trusted by notable organizations to deliver impactful talks
             </h3>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <TestimonialCard
               quote="Etornam's collaborative spirit, professionalism and effective communication significantly contributed to the success of the event"
               author="Nana Minta Asiedu"
@@ -244,33 +244,73 @@ export default function Home() {
           </div>
 
           {/* Speaking Style Card */}
-          <div className="mt-16 max-w-3xl mx-auto">
-            
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                My speaking style is engaging and informative, offering practical insights your audience can implement almost immediately. 
+          <div className="mt-8 md:mt-16 max-w-3xl mx-auto">
+            <div className="relative">
+              {/* Background decoration */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-3xl" />
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 to-primary/20 rounded-3xl blur-2xl opacity-50" />
               
-                If your goal is to ensure your audience are able to act on what&apos;s shared at the event, then you&apos;re at the right place.
-                
-                Want to inspire your audience to action at your next event?
-               
-              </p>
-            
-          </div>
+              {/* Content */}
+              <div className="relative p-6 md:p-8 bg-background/80 backdrop-blur-sm rounded-3xl border border-primary/10 shadow-lg space-y-6">
+                {/* Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <svg
+                      className="h-6 w-6 text-primary"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                      />
+                    </svg>
+                  </div>
+                </div>
 
-          <div className="text-center mt-12">
-            <Link href="/speaking">
-              <Button size="lg" className="hover:scale-105 transition-transform">
-                Yes, I want to
-              </Button>
-            </Link>
+                <div className="space-y-6 text-center">
+                  <p className="text-xl md:text-2xl font-medium leading-relaxed">
+                    My speaking style is engaging and informative, offering practical insights your audience can implement almost immediately.
+                  </p>
+                  
+                  <div className="h-px w-1/4 mx-auto bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                  
+                  <p className="text-lg text-muted-foreground">
+                    If your goal is to ensure your audience are able to act on what&apos;s shared at the event, then you&apos;re at the right place.
+                  </p>
+
+                  <div className="pt-4">
+                    <p className="text-lg font-medium text-primary">
+                      Want to inspire your audience to action at your next event?
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex justify-center pt-6">
+                  <Link href="/speaking" className="group">
+                    <Button 
+                      size="lg" 
+                      className="relative overflow-hidden px-8 py-6 h-auto text-base hover:scale-105 transition-all duration-300"
+                    >
+                      <span className="relative z-10">Yes, I want to</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/10 to-primary/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* About Me Section with Hover Effect */}
-      <section className="container py-16">
-        <div className="grid md:grid-cols-2 gap-8 items-center animate-fade-in-up">
-          <div className="relative aspect-square max-w-[600px] w-full mx-auto group">
+      <section className="container py-8 md:py-16">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center animate-fade-in-up px-4 md:px-0">
+          <div className="relative aspect-square max-w-[400px] md:max-w-[600px] w-full mx-auto group">
             <Image
               src="/images/about-etornam-tsyawo.jpg"
               alt="Etornam C. Tsyawo"
@@ -281,30 +321,46 @@ export default function Home() {
               quality={90}
             />
           </div>
-          <div>
-            <h2 className="text-3xl font-bold mb-4">About Me</h2>
-            <p className="text-muted-foreground mb-6">
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">About Me</h2>
+            <p className="text-base md:text-lg text-muted-foreground mb-6">
               A food systems expert with a passion for bridging research and practical implementation.
               Focused on nutrient preservation in home cooking and improving food practices globally.
             </p>
-            <Link href="/about">
-              <Button className="hover:scale-105 transition-transform">My Story</Button>
+            <Link 
+              href="http://buymeacoffee.com/etornamctsyawo/how-my-food-journey-began"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="w-full md:w-auto hover:scale-105 transition-transform group">
+                <span>My Story</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </Button>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Research & Insights with Gradient */}
-      <section className="container py-16 bg-gradient-to-b from-muted/50 to-background">
-        <div className="max-w-[800px] mx-auto text-center animate-fade-in-up">
-          <h2 className="text-3xl font-bold mb-4">Research & Insights</h2>
-          <p className="text-muted-foreground mb-6">
+      <section className="container py-8 md:py-16 bg-gradient-to-b from-muted/50 to-background">
+        <div className="max-w-[800px] mx-auto text-center animate-fade-in-up px-4 md:px-0">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Research & Insights</h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-4 md:mb-6">
             PhD Research focusing on nutrient preservation in home cooking, 
             providing valuable insights for smart kitchen manufacturers, 
             consumers, NGOs, and policymakers.
           </p>
           <Link href="/research">
-            <Button className="hover:scale-105 transition-transform">
+            <Button className="w-full md:w-auto hover:scale-105 transition-transform">
               Collaborate on Research
             </Button>
           </Link>
@@ -312,23 +368,23 @@ export default function Home() {
       </section>
 
       {/* Professional Timeline with Animation */}
-      <section className="container py-16">
-        <h2 className="text-3xl font-bold mb-12 text-center animate-fade-in">Professional Journey</h2>
-        <div className="max-w-3xl mx-auto">
+      <section className="container py-8 md:py-16">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center animate-fade-in px-4 md:px-0">Professional Journey</h2>
+        <div className="max-w-3xl mx-auto px-4 md:px-0">
           <Timeline items={timeline} />
         </div>
       </section>
 
       {/* FoodPulse Platform with Card Effect */}
-      <section className="container py-16">
-        <div className="text-center max-w-[800px] mx-auto bg-muted/50 p-8 rounded-2xl shadow-lg animate-fade-in-up">
-          <h2 className="text-3xl font-bold mb-4">FoodPulse</h2>
-          <p className="text-muted-foreground mb-6">
+      <section className="container py-8 md:py-16">
+        <div className="text-center max-w-[800px] mx-auto bg-muted/50 p-6 md:p-8 rounded-2xl shadow-lg animate-fade-in-up mx-4 md:mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">FoodPulse</h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-4 md:mb-6">
             Your hub for consumer-focused food education, bringing together 
             insights, research, and practical knowledge.
           </p>
           <Link href="https://foodpulse.co/" target="_blank" rel="noopener noreferrer">
-            <Button className="hover:scale-105 transition-transform">
+            <Button className="w-full md:w-auto hover:scale-105 transition-transform">
               Explore FoodPulse
             </Button>
           </Link>
@@ -336,9 +392,9 @@ export default function Home() {
       </section>
 
       {/* Media Gallery with Hover Effects */}
-      <section className="container py-16">
-        <h2 className="text-3xl font-bold mb-8 text-center animate-fade-in-up">Media Gallery</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="container py-8 md:py-16">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center animate-fade-in-up px-4 md:px-0">Media Gallery</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 px-4 md:px-0">
           {mediaGallery.map((item, index) => (
             <div 
               key={index}
@@ -350,13 +406,17 @@ export default function Home() {
                 alt={item.alt}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-110"
-                sizes={item.sizes}
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 400px"
                 quality={85}
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 md:transition-opacity">
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-white">
+                  <h3 className="text-base md:text-lg font-semibold">{item.title}</h3>
                 </div>
+              </div>
+              {/* Mobile-only title overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/60 md:hidden">
+                <h3 className="text-base text-white font-semibold">{item.title}</h3>
               </div>
             </div>
           ))}
