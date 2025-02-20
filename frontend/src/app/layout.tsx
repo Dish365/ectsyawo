@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Replace the Inter font with Playfair Display and Source Sans Pro
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
@@ -41,6 +42,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
