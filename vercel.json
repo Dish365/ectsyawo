@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/studio/(.*)",
+      "dest": "frontend/studio/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "frontend/$1"
     }

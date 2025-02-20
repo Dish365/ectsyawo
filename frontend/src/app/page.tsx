@@ -55,7 +55,7 @@ const MobileHero = () => (
         fill
         className="object-cover object-[30%_center] opacity-80"
         priority
-        sizes="(max-width: 768px) 100vw, 1px"
+        sizes="(max-width: 768px) 100vw"
         quality={90}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
