@@ -1,4 +1,8 @@
-'use client'  // Must be first line
+// Server-side exports in separate file
+export { metadata, viewport } from 'next-sanity/studio'
+
+// Client-side component in different file
+'use client'
 
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
@@ -11,9 +15,6 @@
 
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../../sanity.config'
-
-// Exporting functions/metadata
-export { metadata, viewport } from 'next-sanity/studio'
 
 // Ensures the Studio route is statically generated
 export const dynamic = 'force-static'
