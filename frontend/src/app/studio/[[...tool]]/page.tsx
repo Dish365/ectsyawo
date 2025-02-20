@@ -1,8 +1,10 @@
+'use client'
+
 // Server-side exports in separate file
 export { metadata, viewport } from 'next-sanity/studio'
 
 // Client-side component in different file
-'use client'
+ // MUST be first line with NO preceding comments/whitespace
 
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
