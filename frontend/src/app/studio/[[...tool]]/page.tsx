@@ -7,10 +7,14 @@
  * https://github.com/sanity-io/next-sanity
  */
 
+'use client'
+
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../../sanity.config'
 
+// Ensures the Studio route is statically generated
 export const dynamic = 'force-static'
+export const runtime = 'edge'
 
 export { metadata, viewport } from 'next-sanity/studio'
 
