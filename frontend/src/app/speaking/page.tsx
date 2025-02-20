@@ -258,6 +258,64 @@ export default function SpeakingPage() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonials" className="container py-12 md:py-24">
+        <div className="mx-auto max-w-[85rem]">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl font-bold">What People Say</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hear from event organizers and attendees about their experience
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={testimonial.author}
+                className="group relative"
+                style={{ 
+                  animationDelay: `${index * 150}ms`,
+                  animation: 'fade-in-up 1s ease-out forwards'
+                }}
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 via-primary/50 to-primary/10 rounded-2xl blur opacity-20 group-hover:opacity-75 transition duration-500" />
+                <Card className="relative h-full bg-card/50 backdrop-blur-sm border-primary/10 group-hover:border-primary/30 transition-colors duration-500">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-500">
+                        <svg
+                          className="h-4 w-4 text-primary"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <blockquote className="text-base md:text-lg leading-relaxed text-muted-foreground mb-6">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </blockquote>
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="flex items-center gap-3 w-full">
+                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
+                          {testimonial.initials}
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-semibold">{testimonial.author}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.organization}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Work With Me Section */}
       <section className="container py-16 bg-muted/50">
         <div className="space-y-8">
@@ -675,63 +733,13 @@ export default function SpeakingPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="container py-12 md:py-24">
-        <div className="mx-auto max-w-[85rem]">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl font-bold">What People Say</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear from event organizers and attendees about their experience
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={testimonial.author}
-                className="group relative"
-                style={{ 
-                  animationDelay: `${index * 150}ms`,
-                  animation: 'fade-in-up 1s ease-out forwards'
-                }}
-              >
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 via-primary/50 to-primary/10 rounded-2xl blur opacity-20 group-hover:opacity-75 transition duration-500" />
-                <Card className="relative h-full bg-card/50 backdrop-blur-sm border-primary/10 group-hover:border-primary/30 transition-colors duration-500">
-                  <CardContent className="p-6">
-                    <div className="mb-4">
-                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-500">
-                        <svg
-                          className="h-4 w-4 text-primary"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <blockquote className="text-base md:text-lg leading-relaxed text-muted-foreground mb-6">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </blockquote>
-                    <div className="flex items-center justify-center">
-                      <p className="text-muted-foreground">
-                        Get in touch and let&apos;s discuss your needs and goals now
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Form Section */}
       <section id="booking" className="container py-12 md:py-24">
         <div className="max-w-[58rem] mx-auto">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold">Get in Touch</h2>
-            <p className="text-muted-foreground">Let&apos;s discuss your speaking engagement needs</p>
+            <h2 className="text-3xl font-bold">Contact Me</h2>
+            <p className="text-muted-foreground">Get in touch and let&apos;s discuss your speaking needs and goals now</p>
           </div>
 
           <div className="relative">
