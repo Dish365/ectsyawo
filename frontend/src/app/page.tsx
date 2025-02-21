@@ -91,7 +91,7 @@ export default function Home() {
 
   const timeline = [
     { year: "2024-present", events: [
-      "Doctoral research studying how nutrients can be better retained in food during cooking at home",
+      "Doctoral research studying consumer food practices at the domestic level",
       "Traveled the length and breadth of Ghana to study food practices of consumers at home and micro food scale level"
     ]},
     { year: "2023-present", events: "Running FoodPulse, a food education content platform educating consumers on food choices" },
