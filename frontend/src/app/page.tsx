@@ -94,19 +94,18 @@ export default function Home() {
       "Doctoral research studying household food environments",
       "Traveled the length and breadth of Ghana to study consumer food practices at home and micro scale"
     ]},
-    { year: "2023-present", events: "Running FoodPulse, a food education content platform educating consumers on food choices" },
-    { year: "2023-2024", events: "Worked briefly as a food product developer in a food processing company" },
+    { year: "2023-present", events: "Running FoodPulse, a food education platform providing resources to consumers on food choices" },
     { year: "2023", events: 'Pivoted L&J Foods Ltd to FoodPulse after dealing with depression from "failure" of L&J Foods' },
-    { year: "2022-present", events: "Speaking on food systems topics at different events" },
+    { year: "2022-present", events: "Speaking on food systems topics at various events" },
     { year: "2021-2023", events: [
-      "Pursued a masters in food science and technology with a focus on food safety in the pork open market in Ghana",
+      "Pursued a masters in food science and technology with a focus on food safety",
       "Started L&J Foods company Ltd",
       "Led a team to train rural farmers on sustainable farming practices"
     ]},
     { year: "2019", events: "Started another food business with a partner on campus (also failed)" },
     { year: "2018", events: "Started a small food business from my university dorm (later failed)" },
-    { year: "2017", events: "Developed a process to extend the shelf life of taro leave (highly perishable leafy vegetable) from 3 days to 21 days" },
-    { year: "2015", events: "Got inspired through an argument with mum and started exploring" }
+    { year: "2017", events: "Developed a process to extend the shelf life of a highly perishable leafy vegetable from 3 days to 21 days" },
+    { year: "2015", events: "Got inspired through an argument with mum and started exploring the food space" }
   ];
 
   const organizationLogos = [
