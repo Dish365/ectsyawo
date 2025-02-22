@@ -91,8 +91,8 @@ export default function Home() {
 
   const timeline = [
     { year: "2024-present", events: [
-      "Doctoral research studying consumer food practices at the domestic level",
-      "Traveled the length and breadth of Ghana to study food practices of consumers at home and micro food scale level"
+      "Doctoral research studying household food environments",
+      "Traveled the length and breadth of Ghana to study consumer food practices at home and micro scale"
     ]},
     { year: "2023-present", events: "Running FoodPulse, a food education content platform educating consumers on food choices" },
     { year: "2023-2024", events: "Worked briefly as a food product developer in a food processing company" },
@@ -103,7 +103,7 @@ export default function Home() {
       "Started L&J Foods company Ltd",
       "Led a team to train rural farmers on sustainable farming practices"
     ]},
-    { year: "2019", events: "Started another with a partner on campus (also failed)" },
+    { year: "2019", events: "Started another food business with a partner on campus (also failed)" },
     { year: "2018", events: "Started a small food business from my university dorm (later failed)" },
     { year: "2017", events: "Developed a process to extend the shelf life of taro leave (highly perishable leafy vegetable) from 3 days to 21 days" },
     { year: "2015", events: "Got inspired through an argument with mum and started exploring" }
